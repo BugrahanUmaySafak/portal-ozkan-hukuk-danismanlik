@@ -61,7 +61,7 @@ export default function ClientContactList({
     }).format(new Date(date));
 
   return (
-    <div className="max-w-full space-y-6 p-12">
+    <div className="max-w-full overflow-x-auto space-y-6 p-12">
       {contacts.map((contact) => (
         <Card
           key={contact._id}
