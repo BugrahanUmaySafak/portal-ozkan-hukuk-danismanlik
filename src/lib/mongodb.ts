@@ -32,3 +32,14 @@ if (process.env.NODE_ENV === "development") {
 }
 
 export default clientPromise;
+
+export async function getIletisimMessagesCollection(): Promise<Collection> {
+  try {
+    const client = await clientPromise;
+    const db = client.db("iletisim");
+    return db.collection("messages");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    throw new Error("Database connection failed");
+  }
+}
