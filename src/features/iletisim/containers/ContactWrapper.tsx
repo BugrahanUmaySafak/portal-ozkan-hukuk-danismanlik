@@ -1,10 +1,10 @@
 import React from "react";
-import AllContacts from "../components/AllContacts";
+import AllContactsServer from "../components/AllContactsServer";
 
 export default function ContactWrapper() {
   return (
     <>
-      <AllContacts />
+      <AllContactsServer />
     </>
   );
 }
