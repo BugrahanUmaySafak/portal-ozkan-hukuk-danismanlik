@@ -43,3 +43,14 @@ export async function getIletisimMessagesCollection(): Promise<Collection> {
     throw new Error("Database connection failed");
   }
 }
+
+export async function getVideosDatabase(): Promise<Collection> {
+  try {
+    const client = await clientPromise;
+    const db = client.db("videolarimiz");
+    return db.collection("media");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    throw new Error("Database connection failed");
+  }
+}
