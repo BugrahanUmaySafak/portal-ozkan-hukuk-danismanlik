@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { Video } from "../types";
-import { Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { deleteVideoAction } from "@/features/videolarimiz/actions/deleteVideoAction";
 import { useRouter } from "next/navigation";
@@ -140,19 +140,6 @@ export default function VideoCard({
                   {title}
                 </CardTitle>
               </div>
-              <Button
-                size="icon"
-                variant="ghost"
-                className="text-red-500 hover:bg-red-100"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  handleDelete();
-                }}
-                disabled={isPending}
-              >
-                <Trash2 className="w-4 h-4" />
-              </Button>
             </CardHeader>
 
             <CardContent className="space-y-4">
@@ -162,6 +149,37 @@ export default function VideoCard({
               >
                 {description}
               </CardDescription>
+
+              <div className="flex items-center justify-between gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="w-1/2"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    router.push(`/videolarimiz/${_id}`);
+                  }}
+                >
+                  <Pencil />
+                  Düzenle
+                </Button>
+
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  className="w-1/2"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    handleDelete();
+                  }}
+                  disabled={isPending}
+                >
+                  <Trash2 />
+                  Sil
+                </Button>
+              </div>
 
               <p className="text-xs text-muted-foreground">
                 {new Date(createdAt).toLocaleDateString("tr-TR")}
